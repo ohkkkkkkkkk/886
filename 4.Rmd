@@ -1,0 +1,92 @@
+### Qestion 4
+#### part a
+```{r}
+library(lubridate)
+birthdate1="1965-05-16"
+birthdate2="1922-03-01"
+birthdate3="1942-09-21"
+birthdate=c(birthdate1,birthdate2,birthdate3)
+
+deathdate1="1994-06-22"
+deathdate2="1993-07-21"
+deathdate3="1996-04-29"
+deathdate=c(deathdate1,deathdate2,deathdate3)
+
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+  require(lubridate)
+  period <- as.period(new_interval(birthDate, refDate),
+                      unit = "year")
+  period$year
+}
+
+calc_age(birthdate,deathdate)+1
+
+```
+#### part b
+```{r}
+deathdate.1 <- ymd("1994-06-22")
+dd1<-floor_date(deathdate.1,"year")
+deathdate.2 <- ymd("1993-07-21")
+dd2<-floor_date(deathdate.2,"year")
+deathdate.3 <- ymd("1996-04-29")
+dd3<-floor_date(deathdate.3,"year")
+
+deathdate.b<-c(dd1,dd2,dd3)
+
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+  require(lubridate)
+  period <- as.period(new_interval(birthDate, refDate),
+                      unit = "year")
+  period$year
+}
+
+calc_age(birthdate,deathdate.b)
+```
+
+#### part c
+```{r}
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+  require(lubridate)
+  period <- as.period(new_interval(birthDate, refDate),
+                      unit = "year")
+  period$year
+}
+
+calc_age(birthdate,deathdate)
+```
+#### Timelines
+```{r}
+library(timelineS)
+EventsA=as.factor(c("28-year-old","PA","29-year-old","Death","PA","30-year-old","PA"))
+Events_DatesA = as.Date(c("1993-05-16","1993-07-21","1994-05-16","1994-06-22","1994-07-21","1995-05-16","1995-07-21"))
+dfA <- data.frame(EventsA,Events_DatesA)
+timelineS(dfA,main = "Timeline for Life A", xlab = "Years", buffer.days = 200,
+          label.direction = "up",scale = "year", line.width= 3,
+          label.length = c(0.2,0.8,0.5,1.2),label.position = 3,
+          line.color = "black", label.color = "red",point.color = "red", pch = 20)
+
+```
+
+```{r}
+EventsB = as.factor(c("70-year-old","PA","71-year-old","Death","PA","72-year-old","PA"))
+Events_DatesB = as.Date(c("1992-03-1","1992-09-23","1993-03-1","1993-07-21", "1993-09-23","1994-03-1","1994-09-23"))
+dfB <- data.frame(EventsB,Events_DatesB)
+timelineS(dfB,main = "Timeline for Life B", xlab = "Years", buffer.days = 200,
+          label.direction = "up",scale = "year", line.width= 3,
+          label.length = c(0.2,0.8,0.5,1.2),label.position = 3,
+          line.color = "black", label.color = "blue",point.color = "blue", pch = 20)
+
+```
+```{r}
+EventsC = as.factor(c("PA","53-year-old","Death","PA","54-year-old"))
+Events_DatesC = as.Date(c("1995-06-2","1995-09-21","1996-04-29","1996-06-2", "1996-09-21"))
+dfC <- data.frame(EventsC,Events_DatesC)
+timelineS(dfC,main = "Timeline for Life C", xlab = "Years", buffer.days = 200,
+          label.direction = "up",scale = "year", line.width= 3,
+          label.length = c(0.2,0.8,0.5,1.2),label.position = 3,
+          line.color = "black", label.color = "yellow",point.color = "yellow", pch = 20)
+
+
+
+```
+

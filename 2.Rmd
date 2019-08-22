@@ -1,0 +1,20 @@
+### Qestion 2
+#### part a
+```{r}
+i=0.035
+Scott1=function(p){p*(1-(1+i)^(-30))/i-600000}
+x=uniroot(Scott1,c(0,60000))$root
+x
+```
+
+#### part b
+```{r}
+Scott2=function(n){(x+3500)*(1-(1+i)^(-n))/i-600000+132622.8*(1+i)^(-n)}
+uniroot(Scott2,c(0,30))
+Scott3=function(n){(x+3500)*(1-(1+i)^(-n))/i-600000+100000*(1+i)^(-n)}
+uniroot(Scott3,c(0,30))
+ceiling(uniroot(Scott2,c(0,30))$root)
+n=floor(uniroot(Scott3,c(0,30))$root)
+finalpay=(600000-(x+3500)*(1-(1+i)^(-n))/i)*1.035^(n+1)
+finalpay-100000-3500  
+```

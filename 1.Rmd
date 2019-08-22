@@ -1,0 +1,6 @@
+### Qestion 1
+```{r}
+i=0.035
+Bill=function(p){p*(1-(1+i)^(-30))/i-600000}
+uniroot(Bill,c(0,50000))$root
+```
